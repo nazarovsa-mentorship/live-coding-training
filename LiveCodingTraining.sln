@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Linq", "Mentorship.LiveCoding.Linq\Mentorship.LiveCoding.Linq.csproj", "{CFC519A4-2B6A-4B60-A785-E0102F2F181B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Linq", "src\LiveCodingTraining.Linq\LiveCodingTraining.Linq.csproj", "{CFC519A4-2B6A-4B60-A785-E0102F2F181B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Linq.UnitTests", "tests\Mentorship.LiveCoding.Linq.UnitTests\Mentorship.LiveCoding.Linq.UnitTests.csproj", "{32E570BE-9058-4A34-BDC4-B02FCE27229A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Linq.UnitTests", "tests\LiveCodingTraining.Linq.UnitTests\LiveCodingTraining.Linq.UnitTests.csproj", "{32E570BE-9058-4A34-BDC4-B02FCE27229A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Arrays.UnitTests", "tests\Mentorship.LiveCoding.Arrays.UnitTests\Mentorship.LiveCoding.Arrays.UnitTests.csproj", "{FE6802E7-DFCA-45FE-BEC9-5B0EF7BD48FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Arrays.UnitTests", "tests\LiveCodingTraining.Arrays.UnitTests\LiveCodingTraining.Arrays.UnitTests.csproj", "{FE6802E7-DFCA-45FE-BEC9-5B0EF7BD48FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Strings", "src\Mentorship.LiveCoding.Strings\Mentorship.LiveCoding.Strings.csproj", "{DFC862E1-B6D1-4734-B218-8CF6E0848881}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Strings", "src\LiveCodingTraining.Strings\LiveCodingTraining.Strings.csproj", "{DFC862E1-B6D1-4734-B218-8CF6E0848881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Arrays", "src\Mentorship.LiveCoding.Arrays\Mentorship.LiveCoding.Arrays.csproj", "{9C0F969B-C309-442A-84D9-E93870FA2B57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Arrays", "src\LiveCodingTraining.Arrays\LiveCodingTraining.Arrays.csproj", "{9C0F969B-C309-442A-84D9-E93870FA2B57}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Tests", "_Tests", "{B4009EEE-5E6B-4FCC-80BA-6DE8CF7ABF9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentorship.LiveCoding.Strings.UnitTests", "tests\Mentorship.LiveCoding.Strings.UnitTests\Mentorship.LiveCoding.Strings.UnitTests.csproj", "{0D076036-3B13-4D41-BE13-839D4FC2BF9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCodingTraining.Strings.UnitTests", "tests\LiveCodingTraining.Strings.UnitTests\LiveCodingTraining.Strings.UnitTests.csproj", "{0D076036-3B13-4D41-BE13-839D4FC2BF9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,4 @@
-using Mentorship.LiveCoding.Arrays;
-
-namespace Mentorship.LiveCoding.RandomTasks.UnitTests;
+namespace LiveCodingTraining.Arrays.UnitTests;
 
 public class ArraysTests
 {

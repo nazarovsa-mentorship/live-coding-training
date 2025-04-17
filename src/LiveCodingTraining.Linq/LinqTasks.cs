@@ -1,4 +1,4 @@
-﻿namespace Mentorship.LiveCoding.Linq;
+﻿namespace LiveCodingTraining.Linq;
 
 public static class LinqTasks
 {

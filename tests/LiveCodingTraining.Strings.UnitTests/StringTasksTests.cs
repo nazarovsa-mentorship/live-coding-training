@@ -1,4 +1,4 @@
-namespace Mentorship.LiveCoding.Strings.UnitTests;
+namespace LiveCodingTraining.Strings.UnitTests;
 
 public class StringTasksTests
 {

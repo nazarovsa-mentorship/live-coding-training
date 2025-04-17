@@ -1,6 +1,4 @@
-using System.Text;
-
-namespace Mentorship.LiveCoding.Strings;
+namespace LiveCodingTraining.Strings;
 
 public static class StringsTasks
 {

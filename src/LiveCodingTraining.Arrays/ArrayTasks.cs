@@ -1,4 +1,4 @@
-﻿namespace Mentorship.LiveCoding.Arrays;
+﻿namespace LiveCodingTraining.Arrays;
 
 public static class ArrayTasks
 {

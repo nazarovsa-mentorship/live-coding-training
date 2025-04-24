@@ -1,4 +1,6 @@
-namespace LiveCodingTraining.Strings.UnitTests;
+using LiveCodingTraining.Strings;
+
+namespace LiveCodingTraining.UnitTests;
 
 public class StringTasksTests
 {

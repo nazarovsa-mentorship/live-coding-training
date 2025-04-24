@@ -1,4 +1,6 @@
-namespace LiveCodingTraining.Arrays.UnitTests;
+using LiveCodingTraining.Arrays;
+
+namespace LiveCodingTraining.UnitTests;
 
 public class ArraysTests
 {

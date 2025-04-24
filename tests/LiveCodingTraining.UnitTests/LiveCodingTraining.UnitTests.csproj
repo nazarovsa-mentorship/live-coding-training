@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\LiveCodingTraining.Arrays\LiveCodingTraining.Arrays.csproj" />
+      <ProjectReference Include="..\..\src\LiveCodingTraining\LiveCodingTraining.csproj" />
     </ItemGroup>
 
 </Project>

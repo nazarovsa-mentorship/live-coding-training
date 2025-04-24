@@ -1,4 +1,6 @@
-namespace LiveCodingTraining.Linq.UnitTests;
+using LiveCodingTraining.Linq;
+
+namespace LiveCodingTraining.UnitTests;
 
 public class LinqTasksTests
 {

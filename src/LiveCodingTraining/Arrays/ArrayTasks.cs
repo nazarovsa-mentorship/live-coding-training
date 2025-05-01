@@ -1,4 +1,6 @@
-﻿namespace LiveCodingTraining.Arrays;
+﻿using System.Text;
+
+namespace LiveCodingTraining.Arrays;
 
 public static class ArrayTasks
 {
@@ -17,6 +19,29 @@ public static class ArrayTasks
     /// Например: [15,11,10,7,12] -> [15,7,12,10,11]
     /// </summary>
     public static List<int> MaxMinArray(List<int> arr)
+    {
+        throw new NotImplementedException();
+    }
+    
+    /// <summary>
+    /// Метод принимает массив чисел больше или равных нулю. Возвращает строку, содержащую максимальное число, которое можно собрать из элементов массива.
+    /// [1, 2, 3] --> "321" (3-2-1)
+    /// [3, 30, 34, 5, 9] --> "9534330" (9-5-34-3-30)
+    /// </summary>
+    public static string Biggest(int[] numbers)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// На вход поступает массив положительных чисел.
+    /// Метод должен вернуть минимальное положительное число, которое нужно добавить к сумме элементов чтобы сумма стала простым числом.
+    /// - Массив всегда содержит хотя бы 2 элемента.
+    /// - Все элементы положительные (n > 0)
+    /// - Массив может содержать дубликаты.
+    /// Простое число - это число, которое делится без остатка только на 1 и на само себя.
+    /// </summary>
+    public static int MinimumToPrime(int[] numbers)
     {
         throw new NotImplementedException();
     }

@@ -37,4 +37,32 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// Метод получает на вход целое число и возвращает строку, разделенную запятыми, группирующими по 3 цифры справа налево.
+    /// 1        -> "1"
+    /// 10       -> "10"
+    /// 100      -> "100"
+    /// 1000     -> "1,000"
+    /// 10000    -> "10,000"
+    /// 100000   -> "100,000"
+    /// 1000000  -> "1,000,000"
+    /// 35235235 -> "35,235,235"
+    /// </summary>
+    public static string GroupByCommas(int n)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Метод принимает на вход строку, состоящую из символов '(' и ')'. Метод должен вернуть true, если порядок скобок верен. В противном случае false.
+    /// "()"              =>  true
+    /// ")(()))"          =>  false
+    /// "("               =>  false
+    /// "(())((()())())"  =>  true
+    /// </summary>
+    public static bool ValidParentheses(string str)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -24,7 +24,7 @@ public class ArraysTests
         Assert.Equal([87, 16, 80, 31, 79, 52, 78, 63, 74],
             ArrayTasks.MaxMinArray([78, 79, 52, 87, 16, 74, 31, 63, 80]));
     }
-    
+
     [Fact]
     public void Biggest_Returns_Valid_String()
     {
@@ -32,6 +32,7 @@ public class ArraysTests
         Assert.Equal("9534330", ArrayTasks.Biggest([3, 30, 34, 5, 9]));
         Assert.Equal("987532115100", ArrayTasks.Biggest([100, 321, 987, 15, 5]));
     }
+
     [Fact]
     public void MinimumToPrime_Returns_Valid_Addition()
     {
@@ -40,5 +41,15 @@ public class ArraysTests
         Assert.Equal(0, ArrayTasks.MinimumToPrime([1, 1, 1]));
         Assert.Equal(5, ArrayTasks.MinimumToPrime([2, 12, 8, 4, 6]));
         Assert.Equal(2, ArrayTasks.MinimumToPrime([50, 39, 49, 6, 17, 28]));
+    }
+
+    [Fact]
+    public void MoveZeroes_ReturnsValidResult()
+    {
+        Assert.True(new[] { 1, 2, 1, 1, 3, 1, 0, 0, 0, 0 }.SequenceEqual(ArrayTasks.MoveZeroes([
+            1, 2, 0, 1, 0, 1, 0, 3, 0, 1
+        ])));
+        Assert.True(new[] { 1, 2, 3, 0 }.SequenceEqual(ArrayTasks.MoveZeroes([1, 2, 3, 0])));
+        Assert.True(new[] { 1, 2, 3, 0 }.SequenceEqual(ArrayTasks.MoveZeroes([0, 1, 2, 3])));
     }
 }

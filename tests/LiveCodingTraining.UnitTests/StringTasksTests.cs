@@ -23,14 +23,52 @@ public class StringTasksTests
         // characters may not be adjacent
         Assert.Equal(2, StringsTasks.DuplicateCount("Indivisibilities"));
     }
-    
+
     [Fact]
     public void InsertMissingLetters_Returns_Valid_Result()
     {
         Assert.Equal("hIJKMNPQRSTUVWXZoPQRSTUVWXZlMNPQRSTUVWXZlyZ", StringsTasks.InsertMissingLetters("holly"));
-        Assert.Equal("hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ", StringsTasks.InsertMissingLetters("hello"));
+        Assert.Equal("hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ",
+            StringsTasks.InsertMissingLetters("hello"));
         Assert.Equal("wXYZw", StringsTasks.InsertMissingLetters("ww"));
         Assert.Equal("wXYZvXYZ", StringsTasks.InsertMissingLetters("wv"));
         Assert.Equal("z", StringsTasks.InsertMissingLetters("z"));
+    }
+
+    [Fact]
+    public void GroupByCommas_Returns_ValidResult()
+    {
+        Assert.Equal("1", StringsTasks.GroupByCommas(1));
+        Assert.Equal("12", StringsTasks.GroupByCommas(12));
+        Assert.Equal("123", StringsTasks.GroupByCommas(123));
+        Assert.Equal("1,234", StringsTasks.GroupByCommas(1234));
+        Assert.Equal("12,345", StringsTasks.GroupByCommas(12345));
+        Assert.Equal("123,456", StringsTasks.GroupByCommas(123456));
+        Assert.Equal("1,234,567", StringsTasks.GroupByCommas(1234567));
+        Assert.Equal("12,345,678", StringsTasks.GroupByCommas(12345678));
+        Assert.Equal("123,456,789", StringsTasks.GroupByCommas(123456789));
+        Assert.Equal("1,234,567,890", StringsTasks.GroupByCommas(1234567890));
+    }
+
+    [Fact]
+    public void ValidParentheses_Returns_True()
+    {
+        Assert.True(StringsTasks.ValidParentheses(string.Empty));
+        Assert.True(StringsTasks.ValidParentheses("()"));
+        Assert.True(StringsTasks.ValidParentheses("((()))"));
+        Assert.True(StringsTasks.ValidParentheses("()()()"));
+        Assert.True(StringsTasks.ValidParentheses("(()())()"));
+        Assert.True(StringsTasks.ValidParentheses("()(())((()))(())()"));
+    }
+
+    [Fact]
+    public void ValidParentheses_Returns_False()
+    {
+        Assert.False(StringsTasks.ValidParentheses(")("));
+        Assert.False(StringsTasks.ValidParentheses("()()("));
+        Assert.False(StringsTasks.ValidParentheses("((())"));
+        Assert.False(StringsTasks.ValidParentheses("())(()"));
+        Assert.False(StringsTasks.ValidParentheses(")()"));
+        Assert.False(StringsTasks.ValidParentheses(")"));
     }
 }

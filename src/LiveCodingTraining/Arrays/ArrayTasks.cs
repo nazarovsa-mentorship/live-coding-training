@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace LiveCodingTraining.Arrays;
+﻿namespace LiveCodingTraining.Arrays;
 
 public static class ArrayTasks
 {
@@ -22,7 +20,7 @@ public static class ArrayTasks
     {
         throw new NotImplementedException();
     }
-    
+
     /// <summary>
     /// Метод принимает массив чисел больше или равных нулю. Возвращает строку, содержащую максимальное число, которое можно собрать из элементов массива.
     /// [1, 2, 3] --> "321" (3-2-1)
@@ -42,6 +40,17 @@ public static class ArrayTasks
     /// Простое число - это число, которое делится без остатка только на 1 и на само себя.
     /// </summary>
     public static int MinimumToPrime(int[] numbers)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Метод принимает массив целых чисел. Необходимо переменстить нули в конец массива, сохранив порядок сортировки.
+    /// [1, 2, 0, 1, 0, 1, 0, 3, 0, 1] -> [1, 2, 1, 1, 3, 1, 0, 0, 0, 0]
+    /// </summary>
+    /// <param name="arr"></param>
+    /// <returns></returns>
+    public static int[] MoveZeroes(int[] arr)
     {
         throw new NotImplementedException();
     }

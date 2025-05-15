@@ -71,4 +71,23 @@ public class StringTasksTests
         Assert.False(StringsTasks.ValidParentheses(")()"));
         Assert.False(StringsTasks.ValidParentheses(")"));
     }
+
+    [Fact]
+    public void UInt32ToIP_ReturnsValidIP()
+    {
+        Assert.Equal("128.114.17.104", StringsTasks.UInt32ToIP(2154959208));
+        Assert.Equal("0.0.0.0", StringsTasks.UInt32ToIP(0));
+        Assert.Equal("128.32.10.1", StringsTasks.UInt32ToIP(2149583361));
+    }
+
+    [Theory]
+    [InlineData("", 0)]
+    [InlineData("аааобагдааа", 5)] // "багда" имеет длину 5
+    [InlineData("абвадга", 5)] // "бвадг" имеет длину 5
+    [InlineData("абвгдеж", 7)] // Все символы уникальны
+    [InlineData("ааааааа", 1)] // Максимальная подстрока с уникальными символами - "а"
+    public void MaxUniqueStringLength_ReturnsCorrectLength(string input, int expected)
+    {
+        Assert.Equal(expected, StringsTasks.MaxUniqueStringLength(input));
+    }
 }

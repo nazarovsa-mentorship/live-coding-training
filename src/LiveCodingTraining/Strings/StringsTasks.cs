@@ -65,4 +65,24 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// На вход поступает uint. Необходимо преобразовать его в ipv4 адрес.
+    /// IP адрес состоит из 4 чисел, разделенных точками. Каждое число от 0 до 255.
+    /// В двоичной системе число 255 представляет собой 11111111.
+    /// Например, 128.32.10.1 в двоичной системе представялет собой 10000000.00100000.00001010.00000001.
+    /// Так как IP адрес содержит 32 бита, можно представить его в виде uint: 2149583361
+    /// </summary>
+    public static string UInt32ToIP(uint ip)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Вернуть максимальную длину уникальной подстроки.
+    /// </summary>
+    public static int MaxUniqueStringLength(string str)
+    {
+        throw new NotImplementedException();
+    }
 }

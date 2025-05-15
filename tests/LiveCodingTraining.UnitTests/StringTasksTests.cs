@@ -86,6 +86,7 @@ public class StringTasksTests
     [InlineData("абвадга", 5)] // "бвадг" имеет длину 5
     [InlineData("абвгдеж", 7)] // Все символы уникальны
     [InlineData("ааааааа", 1)] // Максимальная подстрока с уникальными символами - "а"
+     [InlineData("12345567", 5)] // Максимальная подстрока с уникальными символами - "12345"
     public void MaxUniqueStringLength_ReturnsCorrectLength(string input, int expected)
     {
         Assert.Equal(expected, StringsTasks.MaxUniqueStringLength(input));

@@ -30,7 +30,6 @@ public static class YieldReturnTasks
         IEnumerable<string> logLines,
         int errorThreshold = 3)
     {
-        //$"ALERT in last 5 entries position {currentIndex}";
         throw new NotImplementedException();
     }
 }

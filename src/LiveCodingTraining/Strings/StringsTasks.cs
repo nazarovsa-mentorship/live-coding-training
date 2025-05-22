@@ -85,4 +85,16 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// Метод получает на вход строку в PascalCase.
+    /// Необходимо вернуть строку в snake_case.
+    /// "TestController"  -->  "test_controller"
+    /// "MoviesAndBooks"  -->  "movies_and_books"
+    /// "App7Test"        -->  "app7_test"
+    /// </summary>
+    public static string ToUnderScore(string str)
+    {
+        throw new NotImplementedException();
+    }
 }

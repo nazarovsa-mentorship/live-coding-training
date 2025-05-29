@@ -52,4 +52,46 @@ public class ArraysTests
         Assert.True(new[] { 1, 2, 3, 0 }.SequenceEqual(ArrayTasks.MoveZeroes([1, 2, 3, 0])));
         Assert.True(new[] { 1, 2, 3, 0 }.SequenceEqual(ArrayTasks.MoveZeroes([0, 1, 2, 3])));
     }
+    
+    [Fact]
+        public void TwoSum_VariousInputScenarios_ReturnsCorrectIndices()
+        {
+            // Arrange & Act & Assert - множественные проверки в одном тесте
+            
+            // Базовые случаи
+            Assert.Equal([0, 1], ArrayTasks.TwoSum([2, 7], 9));           // Минимальный массив
+            Assert.Equal([0, 2], ArrayTasks.TwoSum([2, 7, 11], 13));      // Первый и последний элементы
+            Assert.Equal([1, 2], ArrayTasks.TwoSum([2, 7, 11], 18));      // Средние элементы
+            
+            // Массивы разной длины
+            Assert.Equal([0, 3], ArrayTasks.TwoSum([1, 2, 3, 4], 5));     // 4 элемента
+            Assert.Equal([1, 4], ArrayTasks.TwoSum([1, 2, 3, 4, 5], 7));  // 5 элементов
+            Assert.Equal([0, 5], ArrayTasks.TwoSum([1, 2, 3, 4, 5, 6], 7)); // 6 элементов
+            
+            // Отрицательные числа
+            Assert.Equal([0, 1], ArrayTasks.TwoSum([-5, -2, 1, 3], -7));   // Два отрицательных
+            Assert.Equal([2, 3], ArrayTasks.TwoSum([-10, -5, 0, 5], 5));   // Ноль + положительное
+            
+            // Дубликаты в массиве
+            Assert.Equal([0, 3], ArrayTasks.TwoSum([1, 2, 2, 3], 4));      // Одинаковые числа не в решении
+            Assert.Equal([0, 4], ArrayTasks.TwoSum([2, 3, 4, 5, 6], 8));   // Несколько вариантов
+            
+            // Большие числа
+            Assert.Equal([0, 1], ArrayTasks.TwoSum([1000, 2000, 3000], 3000));
+            Assert.Equal([0, 3], ArrayTasks.TwoSum([100, 200, 300, 400], 500));
+            
+            // Граничные значения target
+            Assert.Equal([0, 1], ArrayTasks.TwoSum([0, 1, 2], 1));         // Минимальная сумма
+            Assert.Equal([0, 2], ArrayTasks.TwoSum([1, 2, 10], 11));       // Максимальная сумма в массиве
+            
+            // Сложные случаи поиска
+            Assert.Equal([1, 8], ArrayTasks.TwoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 11)); // Длинный массив
+            Assert.Equal([0, 8], ArrayTasks.TwoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)); // Крайние элементы
+            Assert.Equal([1, 8], ArrayTasks.TwoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 11)); // Соседние элементы в середине
+            
+            // Специальные математические случаи
+            Assert.Equal([0, 1], ArrayTasks.TwoSum([0, 0, 1], 0));         // Сумма нулей
+            Assert.Equal([0, 2], ArrayTasks.TwoSum([-5, 0, 5], 0));        // Противоположные числа
+            Assert.Equal([1, 2], ArrayTasks.TwoSum([1, 5, 5, 10], 10));    // Одинаковые числа в решении
+        }
 }

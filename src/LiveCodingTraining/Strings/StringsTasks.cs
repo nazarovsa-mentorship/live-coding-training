@@ -97,4 +97,18 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+    
+    /// <summary>
+    /// Дан массив символов - буквы английского алфавита. Символы часто повторяются - один символ подряд несколько раз.
+    /// Нужно реализовать RLE сжатие - писать символ в output только один раз, а следом за ним - число повторений.
+    /// 
+    /// Пример:
+    ///
+    /// Input: AAAAABBBBCCDDDOEEEF
+    /// Output: A5B4C2D3O1E3F1
+    /// </summary>
+    public static string RleCompress(string input) 
+    {
+        throw new NotImplementedException();
+    }
 }

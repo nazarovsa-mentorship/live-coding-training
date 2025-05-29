@@ -101,4 +101,39 @@ public class StringTasksTests
     {
         Assert.Equal(expected, StringsTasks.ToUnderScore(input));
     }
+    
+    [Fact]
+    public void RleCompress_VariousInputScenarios_ReturnsCorrectCompression()
+    {
+        // Arrange & Act & Assert - множественные проверки в одном тесте
+            
+        // Пример из документации
+        Assert.Equal("A5B4C2D3O1E3F1", StringsTasks.RleCompress("AAAAABBBBCCDDDOEEEF"));
+            
+        // Граничные случаи
+        Assert.Equal("", StringsTasks.RleCompress(""));                    // Пустая строка
+        Assert.Equal("A1", StringsTasks.RleCompress("A"));                // Один символ
+        Assert.Equal("A7", StringsTasks.RleCompress("AAAAAAA"));          // Все символы одинаковые
+        Assert.Equal("A1B1C1D1E1F1", StringsTasks.RleCompress("ABCDEF")); // Все символы разные
+            
+        // Простые паттерны
+        Assert.Equal("A2B2C2D2", StringsTasks.RleCompress("AABBCCDD"));   // Пары символов
+        Assert.Equal("A1B1A1B1A1B1A1B1", StringsTasks.RleCompress("ABABABAB")); // Чередование
+            
+        // Сложные паттерны
+        Assert.Equal("A3B3A3C3A3", StringsTasks.RleCompress("AAABBBAAACCCAAA")); // Повторяющиеся группы
+        Assert.Equal("A3a2B3b3C3", StringsTasks.RleCompress("AAAaaBBBbbbCCC"));   // Смешанный регистр
+            
+        // Большие числа повторений
+        Assert.Equal("X25", StringsTasks.RleCompress(new string('X', 25))); // Длинная последовательность
+            
+        // Короткие комбинации
+        Assert.Equal("A2B1", StringsTasks.RleCompress("AAB"));
+        Assert.Equal("A1B2", StringsTasks.RleCompress("ABB"));
+        Assert.Equal("A2B2", StringsTasks.RleCompress("AABB"));
+            
+        // Специальные случаи
+        Assert.Equal("Z1Y1X1", StringsTasks.RleCompress("ZYX"));           // Обратный алфавитный порядок
+        Assert.Equal("A10B1A5", StringsTasks.RleCompress("AAAAAAAAAABAAAAA")); // Возврат к предыдущему символу
+    }
 }

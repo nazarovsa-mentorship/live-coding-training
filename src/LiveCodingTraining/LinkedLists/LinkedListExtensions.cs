@@ -43,4 +43,18 @@ public static class LinkedListExtensions
     {
         throw new NotImplementedException();
     }
+    
+    /// <summary>
+    /// Дан односвязный список.
+    /// Необходимо найти средний узел списка.
+    /// Если в списке четное количество узлов, вернуть второй из двух средних узлов.
+    ///Примеры:
+    ///
+    ///Список: [1,2,3,4,5] → вернуть узел со значением 3
+    ///Список: [1,2,3,4,5,6] → вернуть узел со значением 4
+    /// </summary>
+    public static Node MiddleNode(this Node head) 
+    {
+        throw new NotImplementedException();
+    }
 }

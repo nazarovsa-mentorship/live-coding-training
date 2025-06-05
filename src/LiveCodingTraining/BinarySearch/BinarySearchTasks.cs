@@ -15,7 +15,7 @@ public static class BinarySearchTasks
     /// true, если число является совершенным квадратом
     /// false, если число не является совершенным квадратом
     ///
-    /// Функциональные ограничения: временная сложность n log(n)
+    /// Функциональные ограничения: временная сложность log(n)
     /// </summary>
     public static bool IsPerfectSquare(int num)
     {

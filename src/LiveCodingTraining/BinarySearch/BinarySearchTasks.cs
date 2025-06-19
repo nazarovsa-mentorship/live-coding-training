@@ -17,8 +17,36 @@ public static class BinarySearchTasks
     ///
     /// Функциональные ограничения: временная сложность log(n)
     /// </summary>
-    public static bool IsPerfectSquare(int num)
+    public static bool IsPerfectSquare(int n)
     {
-        throw new NotImplementedException();
+        if(n==1)
+            return true;
+        var currentNumber = 2;
+        var currentKey = currentNumber;
+        var halfOfNumber = n / 2;
+        var querterKeyValue = new Dictionary<int, int>() {{2,4}};
+        var cancelTokenSource = new CancellationTokenSource();
+        while (cancelTokenSource.Token.IsCancellationRequested == false)
+        {
+            if(currentNumber > halfOfNumber)
+                cancelTokenSource.Cancel();
+            if (querterKeyValue[currentKey] < halfOfNumber)
+            {
+                currentKey *= currentKey;
+                querterKeyValue.Add(currentKey, currentKey*currentKey);
+            }
+            else if (querterKeyValue[currentKey] > halfOfNumber)
+            {
+                currentNumber++;
+                currentKey = currentNumber;
+                querterKeyValue.Add(currentKey, currentKey * currentKey);
+            }
+            else
+                return true;
+        
+        }
+        return false;
     }
+    
+    
 }

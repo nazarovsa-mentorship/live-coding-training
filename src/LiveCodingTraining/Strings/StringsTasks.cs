@@ -97,7 +97,7 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
-    
+
     /// <summary>
     /// Дан массив символов - буквы английского алфавита. Символы часто повторяются - один символ подряд несколько раз.
     /// Нужно реализовать RLE сжатие - писать символ в output только один раз, а следом за ним - число повторений.
@@ -107,7 +107,35 @@ public static class StringsTasks
     /// Input: AAAAABBBBCCDDDOEEEF
     /// Output: A5B4C2D3O1E3F1
     /// </summary>
-    public static string RleCompress(string input) 
+    public static string RleCompress(string input)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Проверяет, можно ли переставить символы одной строки так, чтобы получить другую строку.
+    /// 
+    /// Две строки являются анаграммами, если они содержат одинаковые символы с одинаковой частотой,
+    /// но возможно в другом порядке. Сравнение должно быть чувствительно к регистру.
+    /// Пробелы и знаки препинания учитываются как обычные символы.
+    /// 
+    /// Примеры:
+    /// ("listen", "silent") -> true
+    /// ("elbow", "below") -> true  
+    /// ("study", "dusty") -> true
+    /// ("hello", "bello") -> false (разные символы)
+    /// ("Hello", "hello") -> false (разный регистр)
+    /// ("a gentleman", "elegant man") -> true (пробелы тоже учитываются)
+    /// ("conversation", "voices rant on") -> false (пробелы тоже учитываются)
+    /// ("", "") -> true (две пустые строки)
+    /// ("abc", "def") -> false (совершенно разные символы)
+    /// ("aab", "abb") -> false (разная частота символов)
+    /// ("Astronomer", "Moon starer") -> false
+    /// </summary>
+    /// <param name="str1">Первая строка</param>
+    /// <param name="str2">Вторая строка</param>
+    /// <returns>true, если строки являются анаграммами, иначе false</returns>
+    public static bool AreAnagrams(string str1, string str2)
     {
         throw new NotImplementedException();
     }

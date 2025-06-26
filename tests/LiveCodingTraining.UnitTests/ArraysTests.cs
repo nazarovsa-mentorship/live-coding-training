@@ -182,4 +182,53 @@ public class ArraysTests
         // Проверяем, что каждый элемент встречается только один раз
         Assert.Equal(result16.Length, result16.Distinct().Count());
     }
+
+    [Fact]
+    public void FindEvenIndex_ReturnsValidResult()
+    {
+        Assert.Equal(3, ArrayTasks.FindEvenIndex([1, 2, 3, 4, 3, 2, 1]));
+        Assert.Equal(1, ArrayTasks.FindEvenIndex([1, 100, 50, -51, 1, 1]));
+        Assert.Equal(-1, ArrayTasks.FindEvenIndex([1, 2, 3, 4, 5, 6]));
+        Assert.Equal(3, ArrayTasks.FindEvenIndex([20, 10, 30, 10, 10, 15, 35]));
+        Assert.Equal(-1, ArrayTasks.FindEvenIndex([]));
+    }
+
+    [Fact]
+    public void FindMissingNumber_ReturnsValidResult()
+    {
+        // Базовые случаи
+        Assert.Equal(2, ArrayTasks.FindMissingNumber([3, 0, 1]));
+        Assert.Equal(2, ArrayTasks.FindMissingNumber([0, 1]));
+        Assert.Equal(0, ArrayTasks.FindMissingNumber([1]));
+
+        // Пропущено число в середине
+        Assert.Equal(8, ArrayTasks.FindMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
+        Assert.Equal(3, ArrayTasks.FindMissingNumber([0, 1, 2, 4, 5]));
+
+        // Пропущено первое число
+        Assert.Equal(0, ArrayTasks.FindMissingNumber([3, 1, 2]));
+
+        // Пропущено последнее число
+        Assert.Equal(4, ArrayTasks.FindMissingNumber([0, 1, 2, 3]));
+        Assert.Equal(3, ArrayTasks.FindMissingNumber([2, 0, 1]));
+
+        // Большой массив
+        Assert.Equal(50, ArrayTasks.FindMissingNumber(
+            Enumerable.Range(0, 100).Where(x => x != 50).ToArray()));
+
+        // Минимальный случай
+        Assert.Equal(1, ArrayTasks.FindMissingNumber([0]));
+
+        // Массив с одним элементом - пропущен 0
+        Assert.Equal(0, ArrayTasks.FindMissingNumber([1]));
+
+        // Массив с одним элементом - пропущена 1
+        Assert.Equal(1, ArrayTasks.FindMissingNumber([0]));
+
+        // Отсортированный массив с пропуском в конце
+        Assert.Equal(5, ArrayTasks.FindMissingNumber([0, 1, 2, 3, 4]));
+
+        // Обратно отсортированный массив
+        Assert.Equal(2, ArrayTasks.FindMissingNumber([4, 3, 1, 0]));
+    }
 }

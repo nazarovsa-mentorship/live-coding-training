@@ -3,6 +3,7 @@ namespace LiveCodingTraining.YieldReturn;
 public static class YieldReturnTasks
 {
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Анализирует поток логов и находит моменты, когда среди последних 5 записей 
     /// слишком много ошибок (больше или равно пороговому значению).
     /// 

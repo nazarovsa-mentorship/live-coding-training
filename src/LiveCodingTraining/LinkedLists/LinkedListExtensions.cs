@@ -5,6 +5,7 @@ namespace LiveCodingTraining.LinkedLists;
 public static class LinkedListExtensions
 {
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Реализовать метод, который получает связанный список и целочисленный индекс, а возвращает узел на позиции индекса. Индекс первого узла начинается с 0, второго с 1 и так далее.
     /// LinkedListExtensions.GetNth(1 -> 2 -> 3 -> null, 0).Data == 1
     /// LinkedListExtensions.GetNth(1 -> 2 -> 3 -> null, 1).Data == 2
@@ -16,6 +17,7 @@ public static class LinkedListExtensions
     }
 
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Реализовать метод, который вставляет новый узел связного списка в указанный индекс. Индекс первого узла начинается с 0, второго с 1 и так далее.
     /// Если индекс выходит за границы 0 и длинны списка, необходимо выбросить ArgumentOutOfRangeException
     /// LinkedListExtensions.InsertNth(1 -> 2 -> 3 -> null, 0, 7)  => 7 -> 1 -> 2 -> 3 -> null
@@ -29,6 +31,7 @@ public static class LinkedListExtensions
     }
 
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Реализовать итеративный метод переворачивания связанного списка. Метод должен вернуть голову нового списка.
     /// </summary>
     public static Node? IterativeReverse(this Node node)
@@ -37,6 +40,7 @@ public static class LinkedListExtensions
     }
 
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Реализовать рекурсивный метод переворачивания связанного списка. Метод должен вернуть голову нового списка.
     /// </summary>
     public static Node? RecursiveReverse(this Node node)
@@ -45,6 +49,7 @@ public static class LinkedListExtensions
     }
     
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Дан односвязный список.
     /// Необходимо найти средний узел списка.
     /// Если в списке четное количество узлов, вернуть второй из двух средних узлов.

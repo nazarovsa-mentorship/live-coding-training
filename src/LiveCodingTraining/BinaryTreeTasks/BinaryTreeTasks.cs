@@ -3,6 +3,7 @@
 public static class BinaryTreeTasks
 {
     /// <summary>
+    /// ИСПОЛЬЗОВАНО НА СОЗВОНЕ
     /// Задача: Path Sum (Сумма пути)
     /// 
     /// Дано бинарное дерево и целое число targetSum. Определить, существует ли путь 

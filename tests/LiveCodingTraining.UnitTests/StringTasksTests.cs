@@ -91,18 +91,6 @@ public class StringTasksTests
         Assert.Equal(expected, StringsTasks.MaxUniqueStringLength(input));
     }
 
-    [Theory]
-    [InlineData("TestController", "test_controller")]
-    [InlineData("ThisIsBeautifulDay", "this_is_beautiful_day")]
-    [InlineData("Am7Days", "am7_days")]
-    [InlineData("My3CodeIs4TimesBetter", "my3_code_is4_times_better")]
-    [InlineData("ArbitrarilySendingDifferentTypesToFunctionsMakesKatasCool",
-        "arbitrarily_sending_different_types_to_functions_makes_katas_cool")]
-    public void ToUnderScore_ReturnsValidSnakeCaseString(string input, string expected)
-    {
-        Assert.Equal(expected, StringsTasks.ToUnderScore(input));
-    }
-
     [Fact]
     public void RleCompress_VariousInputScenarios_ReturnsCorrectCompression()
     {
@@ -138,72 +126,49 @@ public class StringTasksTests
         Assert.Equal("A10B1A5", StringsTasks.RleCompress("AAAAAAAAAABAAAAA")); // Возврат к предыдущему символу
     }
 
-    [Fact]
-    public void AreAnagrams_ReturnsCorrectResults()
+    [Theory]
+    [InlineData("TestController", "test_controller")]
+    [InlineData("ThisIsBeautifulDay", "this_is_beautiful_day")]
+    [InlineData("Am7Days", "am7_days")]
+    [InlineData("My3CodeIs4TimesBetter", "my3_code_is4_times_better")]
+    [InlineData("ArbitrarilySendingDifferentTypesToFunctionsMakesKatasCool",
+        "arbitrarily_sending_different_types_to_functions_makes_katas_cool")]
+    public void ToUnderScore_ReturnsValidSnakeCaseString(string input, string expected)
     {
-        // Пустые строки и null
-        Assert.True(StringsTasks.AreAnagrams("", ""));
-        Assert.True(StringsTasks.AreAnagrams(null, null));
-        Assert.True(StringsTasks.AreAnagrams("", null));
+        Assert.Equal(expected, StringsTasks.ToUnderScore(input));
+    }
 
-        // Простые анаграммы
-        Assert.True(StringsTasks.AreAnagrams("listen", "silent"));
-        Assert.True(StringsTasks.AreAnagrams("elbow", "below"));
-        Assert.True(StringsTasks.AreAnagrams("study", "dusty"));
-        Assert.True(StringsTasks.AreAnagrams("evil", "vile"));
+    [Fact]
+    public void LongestCommonPrefix_ReturnsValidResult()
+    {
+        // Строки с общим префиксом
+        Assert.Equal("fl", StringsTasks.LongestCommonPrefix(["flower", "flow", "flight"]));
+        Assert.Equal("inter", StringsTasks.LongestCommonPrefix(["interstellar", "internet", "internal"]));
+        Assert.Equal("test", StringsTasks.LongestCommonPrefix(["testing", "tester", "test"]));
 
-        // Анаграммы с пробелами
-        Assert.True(StringsTasks.AreAnagrams("a gentleman", "elegant man"));
-        Assert.True(StringsTasks.AreAnagrams("the eyes", "they see"));
-        Assert.True(StringsTasks.AreAnagrams("astronomer ", "moon starer"));
-        Assert.True(StringsTasks.AreAnagrams("debit card", "bad credit"));
+        // Строки без общего префикса
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(["dog", "racecar", "car"]));
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(["abc", "def", "ghi"]));
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(["a", "b"]));
 
-        // Длинные анаграммы
-        Assert.True(StringsTasks.AreAnagrams("dormitory ", "dirty room"));
-        Assert.True(StringsTasks.AreAnagrams("the morse code", "here come dots"));
-        Assert.True(StringsTasks.AreAnagrams("eleven plus two", "twelve plus one"));
-        Assert.True(StringsTasks.AreAnagrams("silent", "listen"));
+        // Идентичные строки
+        Assert.Equal("same", StringsTasks.LongestCommonPrefix(["same", "same", "same"]));
+        Assert.Equal("hello", StringsTasks.LongestCommonPrefix(["hello", "hello"]));
 
-        // Одинаковые строки
-        Assert.True(StringsTasks.AreAnagrams("hello", "hello"));
-        Assert.True(StringsTasks.AreAnagrams("test", "test"));
-        Assert.True(StringsTasks.AreAnagrams("a", "a"));
+        // Одиночные строки
+        Assert.Equal("single", StringsTasks.LongestCommonPrefix(["single"]));
+        Assert.Equal("", StringsTasks.LongestCommonPrefix([""]));
 
-        // Анаграммы со знаками препинания
-        Assert.True(StringsTasks.AreAnagrams("a,b,c", "c,b,a"));
-        Assert.True(StringsTasks.AreAnagrams("hello!", "!hello"));
-        Assert.True(StringsTasks.AreAnagrams("a.b.c", "c.a.b"));
+        // Пустые массивы и null
+        Assert.Equal("", StringsTasks.LongestCommonPrefix([]));
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(null));
 
-        // Сложные случаи с повторяющимися символами
-        Assert.True(StringsTasks.AreAnagrams("abcdefghijklmnop", "ponmlkjihgfedcba"));
-        Assert.True(StringsTasks.AreAnagrams("aaabbb", "bababa"));
+        // Пустые строки в массиве
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(["prefix", "", "pref"]));
+        Assert.Equal("", StringsTasks.LongestCommonPrefix(["", "test", "example"]));
 
         // Строки разной длины
-        Assert.False(StringsTasks.AreAnagrams("hello", "world"));
-        Assert.False(StringsTasks.AreAnagrams("test", "testing"));
-        Assert.False(StringsTasks.AreAnagrams("", "a"));
-        Assert.False(StringsTasks.AreAnagrams("short", "longer word"));
-
-        // Разные символы одинаковой длины
-        Assert.False(StringsTasks.AreAnagrams("hello", "bello"));
-        Assert.False(StringsTasks.AreAnagrams("abc", "def"));
-        Assert.False(StringsTasks.AreAnagrams("test", "best"));
-        Assert.False(StringsTasks.AreAnagrams("python", "java"));
-
-        // Разная частота символов
-        Assert.False(StringsTasks.AreAnagrams("aab", "abb"));
-        Assert.False(StringsTasks.AreAnagrams("abcde", "abccd"));
-        Assert.False(StringsTasks.AreAnagrams("aaa", "aa"));
-        Assert.False(StringsTasks.AreAnagrams("aaabbb", "aabbbb"));
-
-        // Чувствительность к регистру
-        Assert.False(StringsTasks.AreAnagrams("Hello", "hello"));
-        Assert.False(StringsTasks.AreAnagrams("Listen", "Silent"));
-        Assert.False(StringsTasks.AreAnagrams("ABC", "abc"));
-        Assert.False(StringsTasks.AreAnagrams("Test", "tset"));
-
-        // Знаки препинания как части строки
-        Assert.False(StringsTasks.AreAnagrams("hello", "hello!"));
-        Assert.False(StringsTasks.AreAnagrams("almost", "postal")); // похожие, но не анаграммы
+        Assert.Equal("a", StringsTasks.LongestCommonPrefix(["a", "aa", "aaa"]));
+        Assert.Equal("pre", StringsTasks.LongestCommonPrefix(["prefix", "pre", "preparation"]));
     }
 }

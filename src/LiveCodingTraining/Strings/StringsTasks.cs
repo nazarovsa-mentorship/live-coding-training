@@ -149,4 +149,23 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+
+
+    /// <summary>
+    /// Находит самый длинный общий префикс среди массива строк.
+    /// Если общего префикса нет, возвращает пустую строку.
+    ///
+    /// ["flower", "flow", "flight"] → "fl"
+    /// ["dog", "racecar", "car"] → ""
+    /// ["interstellar", "internet", "internal"] → "inter"
+    /// [""] → ""
+    /// ["single"] → "single"
+    /// ["same", "same", "same"] → "same
+    /// </summary>
+    /// <param name="strs">Массив строк для поиска общего префикса</param>
+    /// <returns>Самый длинный общий префикс или пустая строка</returns>
+    public static string LongestCommonPrefix(string[] strs)
+    {
+        throw new NotImplementedException();
+    }
 }

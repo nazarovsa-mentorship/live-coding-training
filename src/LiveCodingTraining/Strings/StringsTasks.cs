@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace LiveCodingTraining.Strings;
 
 public static class StringsTasks
@@ -165,6 +167,53 @@ public static class StringsTasks
     /// <param name="strs">Массив строк для поиска общего префикса</param>
     /// <returns>Самый длинный общий префикс или пустая строка</returns>
     public static string LongestCommonPrefix(string[] strs)
+    {
+        throw new NotImplementedException();
+    }
+    
+    // <summary>
+    /// Метод принимает строку и возвращает строку, в которой каждое слово повернуто задом наперед,
+    /// но порядок слов остается прежним. Слова разделяются одним или несколькими пробелами.
+    /// Ведущие и замыкающие пробелы должны быть сохранены.
+    /// 
+    /// Примеры:
+    /// "hello world" -> "olleh dlrow"
+    /// "The quick brown fox" -> "ehT kciuq nworb xof"  
+    /// "  test  " -> "  tset  " (пробелы сохраняются)
+    /// "a" -> "a"
+    /// "" -> ""
+    /// "hello   world" -> "olleh   dlrow" (множественные пробелы сохраняются)
+    /// "123 456" -> "321 654"
+    /// </summary>
+    public static string ReverseWordsInString(string input)
+    {
+        throw new NotImplementedException();
+    }
+
+    // Вспомогательный метод для разворота строки для ReverseWordsInString
+    private static string ReverseString(string str)
+    {
+        char[] chars = str.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+    
+    /// <summary>
+    /// Метод проверяет, можно ли составить строку target из символов строки source.
+    /// Каждый символ из source можно использовать только один раз.
+    /// Регистр символов учитывается.
+    /// 
+    /// Примеры:
+    /// source="programming", target="gram" -> true (можно взять g, r, a, m)
+    /// source="hello", target="world" -> false (нет символов w, o, r, l, d)
+    /// source="abc", target="cab" -> true (можно переставить)
+    /// source="abc", target="abcc" -> false (не хватает одного 'c')
+    /// source="", target="a" -> false (пустой source)
+    /// source="a", target="" -> true (пустой target)
+    /// source="aab", target="ab" -> true
+    /// source="Programming", target="pro" -> false ('P' != 'p')
+    /// </summary>
+    public static bool CanFormTarget(string source, string target)
     {
         throw new NotImplementedException();
     }

@@ -171,4 +171,108 @@ public class StringTasksTests
         Assert.Equal("a", StringsTasks.LongestCommonPrefix(["a", "aa", "aaa"]));
         Assert.Equal("pre", StringsTasks.LongestCommonPrefix(["prefix", "pre", "preparation"]));
     }
+
+    [Fact]
+    public void ReverseWordsInString_ReturnsValidResult()
+    {
+        // Базовые случаи
+        Assert.Equal("olleh dlrow", StringsTasks.ReverseWordsInString("hello world"));
+        Assert.Equal("ehT kciuq nworb xof", StringsTasks.ReverseWordsInString("The quick brown fox"));
+
+        // Одно слово
+        Assert.Equal("olleh", StringsTasks.ReverseWordsInString("hello"));
+        Assert.Equal("a", StringsTasks.ReverseWordsInString("a"));
+
+        // Пустая строка и null
+        Assert.Equal("", StringsTasks.ReverseWordsInString(""));
+        Assert.Equal(null, StringsTasks.ReverseWordsInString(null));
+
+        // Пробелы в начале и конце
+        Assert.Equal("  tset  ", StringsTasks.ReverseWordsInString("  test  "));
+        Assert.Equal(" olleh dlrow ", StringsTasks.ReverseWordsInString(" hello world "));
+
+        // Множественные пробелы
+        Assert.Equal("olleh   dlrow", StringsTasks.ReverseWordsInString("hello   world"));
+        Assert.Equal("a  b  c", StringsTasks.ReverseWordsInString("a  b  c"));
+        Assert.Equal("cba   fed", StringsTasks.ReverseWordsInString("abc   def"));
+
+        // Только пробелы
+        Assert.Equal("   ", StringsTasks.ReverseWordsInString("   "));
+        Assert.Equal(" ", StringsTasks.ReverseWordsInString(" "));
+
+        // Числа и специальные символы
+        Assert.Equal("321 654", StringsTasks.ReverseWordsInString("123 456"));
+        Assert.Equal("!@# $%^", StringsTasks.ReverseWordsInString("#@! ^%$"));
+        Assert.Equal("321cba 654fed", StringsTasks.ReverseWordsInString("abc123 def456"));
+
+        // Смешанный регистр
+        Assert.Equal("AbC dEf", StringsTasks.ReverseWordsInString("CbA fEd"));
+        Assert.Equal("OLLEH dlrow", StringsTasks.ReverseWordsInString("HELLO world"));
+
+        // Длинные слова
+        Assert.Equal("gnitset", StringsTasks.ReverseWordsInString("testing"));
+        Assert.Equal("noitacilppa", StringsTasks.ReverseWordsInString("application"));
+
+        // Одиночные символы
+        Assert.Equal("a b c d", StringsTasks.ReverseWordsInString("a b c d"));
+    }
+
+    [Fact]
+    public void CanFormTarget_ReturnsValidResult()
+    {
+        // Базовые случаи
+        Assert.True(StringsTasks.CanFormTarget("programming", "gram"));
+        Assert.False(StringsTasks.CanFormTarget("hello", "world"));
+        Assert.True(StringsTasks.CanFormTarget("abc", "cab"));
+        Assert.False(StringsTasks.CanFormTarget("abc", "abcc"));
+
+        // Пустые строки
+        Assert.True(StringsTasks.CanFormTarget("abc", ""));
+        Assert.True(StringsTasks.CanFormTarget("", ""));
+        Assert.False(StringsTasks.CanFormTarget("", "a"));
+        Assert.False(StringsTasks.CanFormTarget(null, "a"));
+        Assert.True(StringsTasks.CanFormTarget("abc", null));
+
+        // Регистр символов
+        Assert.False(StringsTasks.CanFormTarget("Programming", "pro"));
+        Assert.True(StringsTasks.CanFormTarget("Programming", "Pro"));
+        Assert.True(StringsTasks.CanFormTarget("HELLO", "HELL"));
+        Assert.False(StringsTasks.CanFormTarget("hello", "HELLO"));
+
+        // Частота символов
+        Assert.True(StringsTasks.CanFormTarget("aab", "ab"));
+        Assert.True(StringsTasks.CanFormTarget("aabb", "ab"));
+        Assert.False(StringsTasks.CanFormTarget("ab", "aab"));
+        Assert.True(StringsTasks.CanFormTarget("aaabbb", "ab"));
+        Assert.True(StringsTasks.CanFormTarget("aaabbb", "aabb"));
+        Assert.True(StringsTasks.CanFormTarget("aaabbb", "aaabb"));
+
+        // Одинаковые строки
+        Assert.True(StringsTasks.CanFormTarget("test", "test"));
+        Assert.True(StringsTasks.CanFormTarget("a", "a"));
+
+        // Один символ
+        Assert.True(StringsTasks.CanFormTarget("a", ""));
+        Assert.True(StringsTasks.CanFormTarget("abc", "a"));
+        Assert.False(StringsTasks.CanFormTarget("a", "b"));
+
+        // Длинные строки
+        Assert.False(StringsTasks.CanFormTarget("abcdefghijklmnop", "hello"));
+        Assert.False(StringsTasks.CanFormTarget("abcdefghijklmnop", "helloz"));
+
+        // Специальные символы
+        Assert.True(StringsTasks.CanFormTarget("hello world!", "!"));
+        Assert.True(StringsTasks.CanFormTarget("123abc", "1a"));
+        Assert.False(StringsTasks.CanFormTarget("123abc", "1a@"));
+
+        // Пробелы
+        Assert.True(StringsTasks.CanFormTarget("hello world", " "));
+        Assert.True(StringsTasks.CanFormTarget("a b c", "abc"));
+        Assert.False(StringsTasks.CanFormTarget("abc", " "));
+
+        // Дубликаты
+        Assert.True(StringsTasks.CanFormTarget("aabbcc", "abc"));
+        Assert.True(StringsTasks.CanFormTarget("aabbcc", "aabbcc"));
+        Assert.False(StringsTasks.CanFormTarget("aabbcc", "aabbccd"));
+    }
 }

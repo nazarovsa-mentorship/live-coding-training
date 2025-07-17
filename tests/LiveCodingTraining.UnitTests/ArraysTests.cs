@@ -197,4 +197,48 @@ public class ArraysTests
             [1, 12]
         }, result8);
     }
+    
+    [Fact]
+    public void CompressByMajority_ReturnsValidResult()
+    {
+        // Основные примеры
+        Assert.True(new[] { 1, 2, 3, 3, 4 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 1, 1, 2, 3, 3, 4, 4, 4, 4 })));
+        Assert.True(new[] { 5, 5, 2, 1 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 5, 5, 2, 2, 2, 2, 2, 1 })));
+        Assert.True(new[] { 1, 2, 3 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 2, 3 })));
+
+        // Граничные случаи
+        Assert.True(new int[0].SequenceEqual(
+            ArrayTasks.CompressByMajority(new int[0]))); // пустой массив
+        Assert.True(new int[0].SequenceEqual(
+            ArrayTasks.CompressByMajority(null))); // null массив
+        Assert.True(new[] { 5 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 5 }))); // один элемент
+
+        // Случаи с точно 3 элементами
+        Assert.True(new[] { 7 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 7, 7, 7 }))); // точно 3 элемента
+        Assert.True(new[] { 1 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 1, 1, 1, 1, 1 }))); // много одинаковых
+
+        // Смешанные случаи
+        Assert.True(new[] { 1, 1, 2, 3, 3 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 1, 2, 2, 2, 3, 3 }))); // только средняя группа сжимается
+        Assert.True(new[] { 1, 2, 3 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 }))); // все группы сжимаются
+        Assert.True(new[] { 4, 4, 1, 9 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 4, 4, 1, 1, 1, 1, 9, 9, 9 }))); // разные размеры групп
+
+        // Случаи с отрицательными числами
+        Assert.True(new[] { -1, 0, 0, 5 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { -1, -1, -1, 0, 0, 5, 5, 5, 5 })));
+
+        // Чередующиеся паттерны
+        Assert.True(new[] { 1, 2, 1, 2, 1 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 2, 1, 2, 1 }))); // нет групп из 3+
+        Assert.True(new[] { 1, 2, 1 }.SequenceEqual(
+            ArrayTasks.CompressByMajority(new[] { 1, 1, 1, 2, 2, 2, 1, 1, 1 }))); // группы одинаковых чисел разделены
+    }
 }

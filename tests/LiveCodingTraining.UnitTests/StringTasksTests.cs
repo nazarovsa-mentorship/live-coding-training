@@ -275,4 +275,30 @@ public class StringTasksTests
         Assert.True(StringsTasks.CanFormTarget("aabbcc", "aabbcc"));
         Assert.False(StringsTasks.CanFormTarget("aabbcc", "aabbccd"));
     }
+    
+    [Fact]
+    public void FirstUniqueChar_ReturnsValidResult()
+    {
+        // Основные примеры
+        Assert.Equal(0, StringsTasks.FirstUniqueChar("leetcode")); // 'l' на позиции 0
+        Assert.Equal(2, StringsTasks.FirstUniqueChar("loveleetcode")); // 'v' на позиции 2
+        Assert.Equal(-1, StringsTasks.FirstUniqueChar("aabbcc")); // все символы повторяются
+        
+        // Граничные случаи
+        Assert.Equal(-1, StringsTasks.FirstUniqueChar("")); // пустая строка
+        Assert.Equal(-1, StringsTasks.FirstUniqueChar(null)); // null строка
+        Assert.Equal(0, StringsTasks.FirstUniqueChar("a")); // один символ
+        Assert.Equal(0, StringsTasks.FirstUniqueChar("abcdef")); // все символы уникальны
+        
+        // Дополнительные случаи
+        Assert.Equal(-1, StringsTasks.FirstUniqueChar("abccba")); // палиндром, все повторяются
+        Assert.Equal(-1, StringsTasks.FirstUniqueChar("abcabc")); // нет уникальных -> -1
+        Assert.Equal(4, StringsTasks.FirstUniqueChar("aabbz")); // 'z' на позиции 4
+        Assert.Equal(3, StringsTasks.FirstUniqueChar("abacabad")); // 'с' на позиции 3
+        Assert.Equal(0, StringsTasks.FirstUniqueChar("xyz")); // первый символ уникален
+        Assert.Equal(4, StringsTasks.FirstUniqueChar("aabbc")); // 'c' на позиции 4
+        
+        // Проверка чувствительности к регистру
+        Assert.Equal(0, StringsTasks.FirstUniqueChar("Aa")); // 'A' и 'a' разные символы
+    }
 }

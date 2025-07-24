@@ -236,4 +236,20 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+    
+    /// <summary>
+    /// Метод принимает строку и возвращает словарь, где ключ - символ, 
+    /// а значение - список всех позиций (индексов), где этот символ встречается в строке.
+    /// 
+    /// Примеры:
+    /// "hello" → {'h': [0], 'e': [1], 'l': [2, 3], 'o': [4]}
+    /// "abcabc" → {'a': [0, 3], 'b': [1, 4], 'c': [2, 5]}
+    /// "" → {} (пустой словарь)
+    /// "aaa" → {'a': [0, 1, 2]}
+    /// "Hello" → {'H': [0], 'e': [1], 'l': [2, 3], 'o': [4]} (учитывается регистр)
+    /// </summary>
+    public static Dictionary<char, List<int>> GroupCharactersByPosition(string input)
+    {
+        throw new NotImplementedException();
+    }
 }

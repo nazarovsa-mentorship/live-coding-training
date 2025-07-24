@@ -301,4 +301,56 @@ public class StringTasksTests
         // Проверка чувствительности к регистру
         Assert.Equal(0, StringsTasks.FirstUniqueChar("Aa")); // 'A' и 'a' разные символы
     }
+    
+    [Fact]
+    public void GroupCharactersByPosition_ReturnsValidResult()
+    {
+        // Основной пример
+        var result1 = StringsTasks.GroupCharactersByPosition("hello");
+        Assert.Equal(4, result1.Count);
+        Assert.Equal([0], result1['h']);
+        Assert.Equal([1], result1['e']);
+        Assert.Equal([2, 3], result1['l']);
+        Assert.Equal([4], result1['o']);
+
+        // Повторяющиеся символы в разных позициях
+        var result2 = StringsTasks.GroupCharactersByPosition("abcabc");
+        Assert.Equal(3, result2.Count);
+        Assert.Equal([0, 3], result2['a']);
+        Assert.Equal([1, 4], result2['b']);
+        Assert.Equal([2, 5], result2['c']);
+
+        // Пустая строка
+        var result3 = StringsTasks.GroupCharactersByPosition("");
+        Assert.Empty(result3);
+
+        // Один символ повторяется
+        var result4 = StringsTasks.GroupCharactersByPosition("aaa");
+        Assert.Single(result4);
+        Assert.Equal([0, 1, 2], result4['a']);
+
+        // Учет регистра
+        var result5 = StringsTasks.GroupCharactersByPosition("Hello");
+        Assert.Equal(4, result5.Count);
+        Assert.Equal([0], result5['H']);
+        Assert.Equal([1], result5['e']);
+        Assert.Equal([2, 3], result5['l']);
+        Assert.Equal([4], result5['o']);
+
+        // Null строка
+        //var result6 = StringsTasks.GroupCharactersByPosition(null);
+        //Assert.Empty(result6);
+
+        // Один символ
+        var result7 = StringsTasks.GroupCharactersByPosition("x");
+        Assert.Single(result7);
+        Assert.Equal([0], result7['x']);
+
+        // Специальные символы
+        var result8 = StringsTasks.GroupCharactersByPosition("a b a");
+        Assert.Equal(3, result8.Count);
+        Assert.Equal([0, 4], result8['a']);
+        Assert.Equal([1, 3], result8[' ']);
+        Assert.Equal([2], result8['b']);
+    }
 }

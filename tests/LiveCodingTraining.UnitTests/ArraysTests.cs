@@ -241,4 +241,62 @@ public class ArraysTests
         Assert.True(new[] { 1, 2, 1 }.SequenceEqual(
             ArrayTasks.CompressByMajority(new[] { 1, 1, 1, 2, 2, 2, 1, 1, 1 }))); // группы одинаковых чисел разделены
     }
+    
+    [Fact]
+    public void IsMonotonic_ReturnsValidResult()
+    {
+        // Монотонно возрастающие
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 1, 2, 2, 3 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 1, 1, 1 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 1, 2, 4, 5 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 5 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 1, 2 }));
+            
+        // Монотонно убывающие
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 6, 5, 4, 4 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 10, 5, 2, 1, 0 }));
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 5, 4 }));
+            
+        // Не монотонные
+        Assert.False(ArrayTasks.IsMonotonic(new[] { 1, 3, 2 }));
+        Assert.False(ArrayTasks.IsMonotonic(new[] { 1, 2, 4, 5, 3, 3, 7 }));
+        Assert.False(ArrayTasks.IsMonotonic(new[] { 5, 3, 5, 4 }));
+        Assert.False(ArrayTasks.IsMonotonic(new[] { 2, 2, 3, 1, 4 }));
+            
+        // Граничные случаи
+        Assert.True(ArrayTasks.IsMonotonic(new int[0])); // пустой массив
+        Assert.True(ArrayTasks.IsMonotonic(new[] { 100, 100, 100, 100 })); // все элементы равны
+    }
+    
+    [Fact]
+    public void GroupSameElements_ReturnsValidResult()
+    {
+        // Основные случаи
+        Assert.Equal(new[] { 1, 1, 1, 2, 2, 3 }, ArrayTasks.GroupSameElements(new[] { 1, 2, 1, 3, 2, 1 }));
+        Assert.Equal(new[] { 4, 4, 2, 2, 1 }, ArrayTasks.GroupSameElements(new[] { 4, 4, 2, 1, 2 }));
+        Assert.Equal(new[] { 3, 3, 3, 1, 1, 2, 2, 2 }, ArrayTasks.GroupSameElements(new[] { 3, 1, 3, 2, 1, 2, 3, 2 }));
+            
+        // Все элементы уникальны
+        Assert.Equal(new[] { 1, 2, 3 }, ArrayTasks.GroupSameElements(new[] { 1, 2, 3 }));
+        Assert.Equal(new[] { 5, 4, 3, 2, 1 }, ArrayTasks.GroupSameElements(new[] { 5, 4, 3, 2, 1 }));
+            
+        // Все элементы одинаковы
+        Assert.Equal(new[] { 5, 5, 5 }, ArrayTasks.GroupSameElements(new[] { 5, 5, 5 }));
+        Assert.Equal(new[] { 7, 7, 7, 7, 7 }, ArrayTasks.GroupSameElements(new[] { 7, 7, 7, 7, 7 }));
+            
+        // Граничные случаи
+        Assert.Equal(new[] { 42 }, ArrayTasks.GroupSameElements(new[] { 42 })); // один элемент
+        Assert.Empty(ArrayTasks.GroupSameElements(new int[0])); // пустой массив
+        Assert.Empty(ArrayTasks.GroupSameElements(null)); // null
+            
+        // Отрицательные числа
+        Assert.Equal(new[] { -1, -1, 0, 0, 1, 1 }, ArrayTasks.GroupSameElements(new[] { -1, 0, 1, -1, 0, 1 }));
+        Assert.Equal(new[] { -5, -5, -3, -3, -3 }, ArrayTasks.GroupSameElements(new[] { -5, -3, -5, -3, -3 }));
+            
+        // Сложные случаи
+        Assert.Equal(new[] { 1, 1, 1, 1, 2, 3, 3, 4, 4, 4 }, 
+            ArrayTasks.GroupSameElements(new[] { 1, 2, 3, 1, 4, 3, 1, 4, 1, 4 }));
+        Assert.Equal(new[] { 0, 0, 0, 5, 5, 10, 10, 10, 10 }, 
+            ArrayTasks.GroupSameElements(new[] { 0, 5, 10, 0, 10, 5, 0, 10, 10 }));
+    }
 }

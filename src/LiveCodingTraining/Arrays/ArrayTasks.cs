@@ -173,19 +173,7 @@ public static class ArrayTasks
     // [1,1,1] => true (и возрастающий, и убывающий)
     public static bool IsMonotonic(int[] arr)
     {
-        if (arr.Length < 3)
-            return true;
-
-        var isDown = true;
-        var isUp = true;
-
-        for (int i = 0; i < arr.Length - 1; i++)
-        {
-            isDown = isDown && arr[i] >= arr[i + 1];
-            isUp = isUp && arr[i] <= arr[i + 1];
-        }
-
-        return isUp || isDown;
+        throw new NotImplementedException();
     }
     
     // Задача: Группировка одинаковых элементов
@@ -201,30 +189,6 @@ public static class ArrayTasks
     // [] => [] (пустой массив)
     public static int[] GroupSameElements(int[] nums)
     {
-        if (nums == null || nums.Length <= 1)
-            return nums ?? new int[0];
-
-        var result = new List<int>();
-        var processedElements = new HashSet<int>();
-
-        // Проходим по массиву и для каждого нового элемента
-        // собираем все его вхождения
-        foreach (int num in nums)
-        {
-            if (!processedElements.Contains(num))
-            {
-                // Добавляем все вхождения этого элемента
-                foreach (int element in nums)
-                {
-                    if (element == num)
-                    {
-                        result.Add(element);
-                    }
-                }
-                processedElements.Add(num);
-            }
-        }
-
-        return result.ToArray();
+        throw new NotImplementedException();
     }
 }

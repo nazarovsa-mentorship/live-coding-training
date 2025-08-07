@@ -353,4 +353,45 @@ public class StringTasksTests
         Assert.Equal([1, 3], result8[' ']);
         Assert.Equal([2], result8['b']);
     }
+    
+    [Fact]
+    public void FormatPhoneNumber_ReturnsValidResult()
+    {
+        // Основные примеры
+        Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("abc123def456gh7890"));
+        Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("123-456-7890"));
+        Assert.Equal("(555) 123-4567", StringsTasks.FormatPhoneNumber("(555) 123-4567"));
+
+        // Только цифры
+        Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("1234567890"));
+
+        // Неверное количество цифр
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("12345"));
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("12345678901"));
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("123"));
+
+        // Нет цифр
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("no digits here!"));
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("abc-def-ghij"));
+
+        // Граничные случаи
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber(""));
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber(null));
+        Assert.Equal("Invalid phone number", StringsTasks.FormatPhoneNumber("   "));
+
+        // Сложные форматы
+        Assert.Equal("(911) 123-4567", StringsTasks.FormatPhoneNumber("Call 911-123-4567 now!"));
+        Assert.Equal("(000) 000-0001", StringsTasks.FormatPhoneNumber("0000000001"));
+
+        // Смешанные символы
+        Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("phone: +(123) 456-7890 ext."));
+        Assert.Equal("(555) 000-1234", StringsTasks.FormatPhoneNumber("555.000.1234"));
+        Assert.Equal("(987) 654-3210", StringsTasks.FormatPhoneNumber("98a7b6c5d4e3f2g1h0i"));
+
+        // Ноль в начале
+        Assert.Equal("(012) 345-6789", StringsTasks.FormatPhoneNumber("0123456789"));
+
+        // Множественные разделители
+        Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("1--2..3   4@5#6$7%8^9&0"));
+    }
 }

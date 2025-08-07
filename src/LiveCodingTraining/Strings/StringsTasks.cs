@@ -252,4 +252,59 @@ public static class StringsTasks
     {
         throw new NotImplementedException();
     }
+    
+    /// <summary>
+    /// Форматирует телефонный номер в стандартный американский формат.
+    /// Извлекает все цифры из входной строки и форматирует их как "(XXX) XXX-XXXX".
+    /// Если количество цифр не равно 10, возвращает "Invalid phone number".
+    /// 
+    /// Правила:
+    /// - Извлекаются только цифры (0-9)
+    /// - Все остальные символы игнорируются
+    /// - Должно быть ровно 10 цифр для валидного номера
+    /// - Формат результата: "(XXX) XXX-XXXX"
+    /// 
+    /// Примеры:
+    /// Вход: "abc123def456gh7890"
+    /// Выход: "(123) 456-7890"
+    /// 
+    /// Вход: "123-456-7890"
+    /// Выход: "(123) 456-7890"
+    /// 
+    /// Вход: "(555) 123-4567"
+    /// Выход: "(555) 123-4567"
+    /// 
+    /// Вход: "12345"
+    /// Выход: "Invalid phone number" (только 5 цифр)
+    /// 
+    /// Вход: "12345678901"
+    /// Выход: "Invalid phone number" (11 цифр)
+    /// 
+    /// Вход: "no digits here!"
+    /// Выход: "Invalid phone number" (0 цифр)
+    /// </summary>
+    /// <param name="input">Входная строка, которая может содержать цифры номера</param>
+    /// <returns>Отформатированный номер или "Invalid phone number"</returns>
+    public static string FormatPhoneNumber(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return "Invalid phone number";
+    
+        // Извлекаем только цифры
+        var digits = "";
+        foreach (char c in input)
+        {
+            if (char.IsDigit(c))
+            {
+                digits += c;
+            }
+        }
+    
+        // Проверяем, что цифр ровно 10
+        if (digits.Length != 10)
+            return "Invalid phone number";
+    
+        // Форматируем в вид (XXX) XXX-XXXX
+        return $"({digits.Substring(0, 3)}) {digits.Substring(3, 3)}-{digits.Substring(6, 4)}";
+    }
 }

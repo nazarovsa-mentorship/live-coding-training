@@ -287,24 +287,50 @@ public static class StringsTasks
     /// <returns>Отформатированный номер или "Invalid phone number"</returns>
     public static string FormatPhoneNumber(string input)
     {
-        if (string.IsNullOrEmpty(input))
-            return "Invalid phone number";
+        throw new NotImplementedException();
+    }
     
-        // Извлекаем только цифры
-        var digits = "";
-        foreach (char c in input)
-        {
-            if (char.IsDigit(c))
-            {
-                digits += c;
-            }
-        }
+    /// <summary>
+    /// Декодирует строку, сжатую методом RLE (Run-Length Encoding).
+    /// 
+    /// Метод принимает валидную строку в формате "символ+число", где число указывает количество повторений символа. Символ не число.
+    /// Если после символа нет числа, то символ встречается 1 раз.
+    /// 
+    /// Примеры:
+    /// "a3b2c" → "aaabbc"
+    /// "abcd" → "abcd"
+    /// "x10y2z" → "xxxxxxxxxxyyz"
+    /// 
+    /// Входная строка всегда корректна и не требует валидации.
+    /// 
+    /// </summary>
+    /// <param name="encoded">Валидная сжатая строка в формате RLE</param>
+    /// <returns>Декодированная строка</returns>
+    public static string DecodeRle(string encoded)
+    {
+        throw new NotImplementedException();
+    }
     
-        // Проверяем, что цифр ровно 10
-        if (digits.Length != 10)
-            return "Invalid phone number";
-    
-        // Форматируем в вид (XXX) XXX-XXXX
-        return $"({digits.Substring(0, 3)}) {digits.Substring(3, 3)}-{digits.Substring(6, 4)}";
+    /// <summary>
+    /// Декодирует римские цифры в обычные числа.
+    /// 
+    /// Правила декодирования:
+    /// - I=1, V=5, X=10, L=50, C=100, D=500, M=1000
+    /// - Если меньшая цифра стоит перед большей, то она вычитается (IV=4, IX=9)
+    /// - Иначе цифры складываются
+    /// 
+    /// Примеры:
+    /// "XIV" → 14 (X + IV = 10 + 4)
+    /// "MCMXC" → 1990 (M + CM + XC = 1000 + 900 + 90)
+    /// "CDXLIV" → 444 (CD + XL + IV = 400 + 40 + 4)
+    /// 
+    /// Входная строка всегда содержит корректные римские цифры.
+    /// 
+    /// </summary>
+    /// <param name="roman">Строка с римскими цифрами</param>
+    /// <returns>Число в десятичной системе</returns>
+    public static int DecodeRoman(string roman)
+    {
+        throw new NotImplementedException();
     }
 }

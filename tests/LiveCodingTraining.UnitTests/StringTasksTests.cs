@@ -275,7 +275,7 @@ public class StringTasksTests
         Assert.True(StringsTasks.CanFormTarget("aabbcc", "aabbcc"));
         Assert.False(StringsTasks.CanFormTarget("aabbcc", "aabbccd"));
     }
-    
+
     [Fact]
     public void FirstUniqueChar_ReturnsValidResult()
     {
@@ -283,13 +283,13 @@ public class StringTasksTests
         Assert.Equal(0, StringsTasks.FirstUniqueChar("leetcode")); // 'l' на позиции 0
         Assert.Equal(2, StringsTasks.FirstUniqueChar("loveleetcode")); // 'v' на позиции 2
         Assert.Equal(-1, StringsTasks.FirstUniqueChar("aabbcc")); // все символы повторяются
-        
+
         // Граничные случаи
         Assert.Equal(-1, StringsTasks.FirstUniqueChar("")); // пустая строка
         Assert.Equal(-1, StringsTasks.FirstUniqueChar(null)); // null строка
         Assert.Equal(0, StringsTasks.FirstUniqueChar("a")); // один символ
         Assert.Equal(0, StringsTasks.FirstUniqueChar("abcdef")); // все символы уникальны
-        
+
         // Дополнительные случаи
         Assert.Equal(-1, StringsTasks.FirstUniqueChar("abccba")); // палиндром, все повторяются
         Assert.Equal(-1, StringsTasks.FirstUniqueChar("abcabc")); // нет уникальных -> -1
@@ -297,11 +297,11 @@ public class StringTasksTests
         Assert.Equal(3, StringsTasks.FirstUniqueChar("abacabad")); // 'с' на позиции 3
         Assert.Equal(0, StringsTasks.FirstUniqueChar("xyz")); // первый символ уникален
         Assert.Equal(4, StringsTasks.FirstUniqueChar("aabbc")); // 'c' на позиции 4
-        
+
         // Проверка чувствительности к регистру
         Assert.Equal(0, StringsTasks.FirstUniqueChar("Aa")); // 'A' и 'a' разные символы
     }
-    
+
     [Fact]
     public void GroupCharactersByPosition_ReturnsValidResult()
     {
@@ -353,7 +353,7 @@ public class StringTasksTests
         Assert.Equal([1, 3], result8[' ']);
         Assert.Equal([2], result8['b']);
     }
-    
+
     [Fact]
     public void FormatPhoneNumber_ReturnsValidResult()
     {
@@ -393,5 +393,112 @@ public class StringTasksTests
 
         // Множественные разделители
         Assert.Equal("(123) 456-7890", StringsTasks.FormatPhoneNumber("1--2..3   4@5#6$7%8^9&0"));
+    }
+
+    [Fact]
+    public void DecodeRle_Tests()
+    {
+        // Тест базовой функциональности
+        Assert.Equal("aaabbc", StringsTasks.DecodeRle("a3b2c"));
+        Assert.Equal("abcd", StringsTasks.DecodeRle("abcd"));
+        Assert.Equal("aaa", StringsTasks.DecodeRle("a3"));
+
+        // Тест с большими числами
+        Assert.Equal("aaaaaaaaaaaa", StringsTasks.DecodeRle("a12"));
+        Assert.Equal("xxxxxxxxxxyyz", StringsTasks.DecodeRle("x10y2z"));
+        Assert.Equal("aaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccc",
+            StringsTasks.DecodeRle("a12b20c27"));
+
+        // Тест смешанных случаев (с числами и без)
+        Assert.Equal("abbbbcdddd", StringsTasks.DecodeRle("ab4cd4"));
+        Assert.Equal("abcccdeffffff", StringsTasks.DecodeRle("abc3def6"));
+        Assert.Equal("axxxxxxxybbbbbz", StringsTasks.DecodeRle("ax7yb5z"));
+
+        // Тест одиночных символов
+        Assert.Equal("a", StringsTasks.DecodeRle("a1"));
+        Assert.Equal("abc", StringsTasks.DecodeRle("a1b1c1"));
+
+        // Тест с пустой строкой
+        Assert.Equal("", StringsTasks.DecodeRle(""));
+
+        // Тест с различными символами
+        Assert.Equal("!!!@@@###", StringsTasks.DecodeRle("!3@3#3"));
+        Assert.Equal("  aa", StringsTasks.DecodeRle(" 2a2"));
+
+        // Тест больших чисел
+        Assert.Equal(new string('z', 99), StringsTasks.DecodeRle("z99"));
+    }
+
+    [Fact]
+    public void DecodeRoman_Tests()
+    {
+        // Тест базовых символов
+        Assert.Equal(1, StringsTasks.DecodeRoman("I"));
+        Assert.Equal(5, StringsTasks.DecodeRoman("V"));
+        Assert.Equal(10, StringsTasks.DecodeRoman("X"));
+        Assert.Equal(50, StringsTasks.DecodeRoman("L"));
+        Assert.Equal(100, StringsTasks.DecodeRoman("C"));
+        Assert.Equal(500, StringsTasks.DecodeRoman("D"));
+        Assert.Equal(1000, StringsTasks.DecodeRoman("M"));
+
+        // Тест простых комбинаций (сложение)
+        Assert.Equal(2, StringsTasks.DecodeRoman("II"));
+        Assert.Equal(3, StringsTasks.DecodeRoman("III"));
+        Assert.Equal(6, StringsTasks.DecodeRoman("VI"));
+        Assert.Equal(7, StringsTasks.DecodeRoman("VII"));
+        Assert.Equal(8, StringsTasks.DecodeRoman("VIII"));
+        Assert.Equal(11, StringsTasks.DecodeRoman("XI"));
+        Assert.Equal(12, StringsTasks.DecodeRoman("XII"));
+        Assert.Equal(15, StringsTasks.DecodeRoman("XV"));
+        Assert.Equal(20, StringsTasks.DecodeRoman("XX"));
+        Assert.Equal(30, StringsTasks.DecodeRoman("XXX"));
+
+        // Тест вычитания
+        Assert.Equal(4, StringsTasks.DecodeRoman("IV"));
+        Assert.Equal(9, StringsTasks.DecodeRoman("IX"));
+        Assert.Equal(14, StringsTasks.DecodeRoman("XIV"));
+        Assert.Equal(19, StringsTasks.DecodeRoman("XIX"));
+        Assert.Equal(40, StringsTasks.DecodeRoman("XL"));
+        Assert.Equal(44, StringsTasks.DecodeRoman("XLIV"));
+        Assert.Equal(49, StringsTasks.DecodeRoman("XLIX"));
+        Assert.Equal(90, StringsTasks.DecodeRoman("XC"));
+        Assert.Equal(94, StringsTasks.DecodeRoman("XCIV"));
+        Assert.Equal(99, StringsTasks.DecodeRoman("XCIX"));
+        Assert.Equal(400, StringsTasks.DecodeRoman("CD"));
+        Assert.Equal(444, StringsTasks.DecodeRoman("CDXLIV"));
+        Assert.Equal(900, StringsTasks.DecodeRoman("CM"));
+        Assert.Equal(999, StringsTasks.DecodeRoman("CMXCIX"));
+
+        // Тест сложных чисел
+        Assert.Equal(1994, StringsTasks.DecodeRoman("MCMXCIV"));
+        Assert.Equal(1990, StringsTasks.DecodeRoman("MCMXC"));
+        Assert.Equal(2023, StringsTasks.DecodeRoman("MMXXIII"));
+        Assert.Equal(3999, StringsTasks.DecodeRoman("MMMCMXCIX"));
+        Assert.Equal(1776, StringsTasks.DecodeRoman("MDCCLXXVI"));
+        Assert.Equal(2024, StringsTasks.DecodeRoman("MMXXIV"));
+
+        // Тест больших чисел
+        Assert.Equal(2000, StringsTasks.DecodeRoman("MM"));
+        Assert.Equal(3000, StringsTasks.DecodeRoman("MMM"));
+        Assert.Equal(1500, StringsTasks.DecodeRoman("MD"));
+        Assert.Equal(1600, StringsTasks.DecodeRoman("MDC"));
+        Assert.Equal(1700, StringsTasks.DecodeRoman("MDCC"));
+        Assert.Equal(1800, StringsTasks.DecodeRoman("MDCCC"));
+
+        // Тест с пустой строкой
+        Assert.Equal(0, StringsTasks.DecodeRoman(""));
+
+        // Тест специфических комбинаций
+        Assert.Equal(24, StringsTasks.DecodeRoman("XXIV"));
+        Assert.Equal(27, StringsTasks.DecodeRoman("XXVII"));
+        Assert.Equal(48, StringsTasks.DecodeRoman("XLVIII"));
+        Assert.Equal(59, StringsTasks.DecodeRoman("LIX"));
+        Assert.Equal(93, StringsTasks.DecodeRoman("XCIII"));
+        Assert.Equal(141, StringsTasks.DecodeRoman("CXLI"));
+        Assert.Equal(163, StringsTasks.DecodeRoman("CLXIII"));
+        Assert.Equal(402, StringsTasks.DecodeRoman("CDII"));
+        Assert.Equal(575, StringsTasks.DecodeRoman("DLXXV"));
+        Assert.Equal(911, StringsTasks.DecodeRoman("CMXI"));
+        Assert.Equal(1024, StringsTasks.DecodeRoman("MXXIV"));
     }
 }
